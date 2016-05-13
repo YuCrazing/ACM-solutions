@@ -1,2 +1,2 @@
 # ACM-solutions
-Some personal solutions about ACM problems
+Personal solutions about ACM problems
