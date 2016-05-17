@@ -12,7 +12,6 @@
 #include <iostream>
 #include <cstring>
 #include <algorithm>
-#define LL long long
 #define pr printf
 #define sc scanf
 #define mem(a,b) memset(a,b,sizeof(a))
