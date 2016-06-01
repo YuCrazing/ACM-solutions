@@ -19,7 +19,7 @@ int main() {
     for(int cas = 1; cas <= T; cas ++) {
         scanf("%d.%d.%d.%d", &dIP[0], &dIP[1], &dIP[2], &dIP[3]);
         scanf("%d.%d.%d.%d", &bIP[0], &bIP[1], &bIP[2], &bIP[3]);
-        char same = true;
+        bool same = true;
         for(int i = 0; i < 4; i ++)
             if(b2d(bIP[i]) != dIP[i]) {
                 same = false;
