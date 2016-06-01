@@ -76,7 +76,7 @@ int main() {
 
 /*
 solution:
-    (h + m/60 + s/3600)/12 + (m + s/60)/12 = 2 * ((sym.h + sym.m/60 +sym.s/3600) / 12).
+    (h + m/60 + s/3600)/12 + (m + s/60)/60 = 2 * ((sym.h + sym.m/60 +sym.s/3600) / 12).
     symmetry line can be sym or (sym + 6hours)%12.
 
 sample input:
