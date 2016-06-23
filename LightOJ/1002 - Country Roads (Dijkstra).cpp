@@ -62,7 +62,6 @@ void Dijkstra(int src) {
 }
 int main() {
 
-    //freopen("output.txt", "w", stdout);
     int u, v, w, t;
     scanf("%d", &T);
     for(int cas = 1; cas <= T; cas ++) {
