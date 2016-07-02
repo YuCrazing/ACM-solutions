@@ -24,7 +24,7 @@ int main(){
         for(int j = 0; j < l; j ++)
             if(!(i&(1<<j))){
             for(int k = 0; k < K; k ++)
-                dp[i | (1<<j)][(k * base + dig[j]) % K] += dp[i][k];
+                dp[i|(1<<j)][(k * base + dig[j]) % K] += dp[i][k];
         }
         printf("Case %d: %lld\n", cas, dp[dst][0]);
     }
