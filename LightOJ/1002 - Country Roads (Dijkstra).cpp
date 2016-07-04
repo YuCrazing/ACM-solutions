@@ -12,7 +12,7 @@ int head[MAXN], dis[MAXN], T, n, m, cnt;
 bool vis[MAXN];
 struct Edge {
     int next, to, w;
-} e[40000]; //
+} e[40000];
 
 struct Node {
     int v, val;
