@@ -11,6 +11,7 @@ int main() {
     for(int cas = 1; cas <= T; cas ++) {
         scanf("%s", s);
         int n = strlen(s);
+        memset(dp, 0, sizeof(dp));
         for(int j = 0; j < n; j ++) {
             dp[j][j] = 1;
             for(int i = j - 1; i >= 0; i --) {
