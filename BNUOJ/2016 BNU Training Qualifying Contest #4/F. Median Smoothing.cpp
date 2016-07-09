@@ -44,7 +44,6 @@ int main() {
     sum = max(sum, (cnt + 1) / 2);
     solve(las, n - 1);
 
-
     printf("%d\n", sum);
     for(int i = 0; i < n; i ++) printf((i == n - 1) ? "%d\n" : "%d ", a[i]);
     return 0;

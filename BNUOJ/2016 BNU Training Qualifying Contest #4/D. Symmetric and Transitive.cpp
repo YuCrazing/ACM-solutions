@@ -21,6 +21,7 @@ ll qmod(ll a,ll b) {
     }
     return res;
 }
+
 ll dp[MAXN][MAXN];
 ll bell[MAXN];
 int main() {
