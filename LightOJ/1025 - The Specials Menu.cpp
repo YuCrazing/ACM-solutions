@@ -16,7 +16,7 @@ int main() {
             dp[j][j] = 1;
             for(int i = j - 1; i >= 0; i --) {
                 dp[i][j] = 0;
-                if(s[i] == s[j]) dp[i][j] += 1 + dp[i + 1][j - 1];   //
+                if(s[i] == s[j]) dp[i][j] += 1 + dp[i + 1][j - 1]; //
                 dp[i][j] += dp[i + 1][j];
                 dp[i][j] += dp[i][j - 1];
                 dp[i][j] -= dp[i + 1][j - 1]; //
