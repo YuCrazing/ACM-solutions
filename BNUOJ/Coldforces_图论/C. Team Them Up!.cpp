@@ -17,7 +17,7 @@ struct Edge {
     int next, to;
 } edge[MAXM];
 
-int head[MAXN], col[MAXN], dp[MAXN][MAXN], path[MAXN], ans[2][MAXN], belong[MAXN], tot, cct;
+int head[MAXN], col[MAXN], dp[MAXN][MAXN], path[MAXN], tot, cct;
 bool mp[MAXN][MAXN];
 stack<int> st[2];
 
@@ -42,7 +42,6 @@ void addedge(int u, int v) {
 bool dfs(int u, int fa) {
     bool ok = 1;
     cc[cct].node.push_back(u);
-    belong[u] = cct;
     col[u] = 3 - col[fa];
     if(col[u] == 1) cc[cct].w ++;
     else cc[cct].b ++;
@@ -108,17 +107,12 @@ int main() {
             }
         }
 
-        int ct[2] = {0, 0};
         for(int i = 0; i < 2; i ++) {
+            printf("%d", st[i].size());
             while(!st[i].empty()) {
-                ans[i][ct[i] ++] = st[i].top();
+                printf(" %d", st[i].top());
                 st[i].pop();
             }
-        }
-
-        for(int k = 0; k < 2; k ++) {
-            printf("%d", ct[k]);
-            for(int i = 0; i < ct[k]; i ++) printf(" %d", ans[k][i]);
             printf("\n");
         }
     }
