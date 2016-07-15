@@ -25,7 +25,8 @@ int main() {
             else if(i < n - 1 && (word[i] == "should" ||word[i] == "would") && word[i + 1] == "of") ans ++;
             int sz = word[i].size();
             int pos = word[i].find("lol", 0);
-            if(pos >=0 && pos < sz) ans ++;
+//            if(pos >=0 && pos < sz) ans ++;
+            if(pos != string::npos) ans ++;
         }
         printf("%d\n",ans * 10);
     }
