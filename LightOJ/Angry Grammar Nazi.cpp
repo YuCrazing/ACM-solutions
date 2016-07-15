@@ -4,8 +4,6 @@
 #include<cstdio>
 #include<algorithm>
 using namespace std;
-string t[]= {"u","ur","would of","should of"};
-int lent[]= {1,2,8,9};
 string s, word[111];
 
 int main() {
