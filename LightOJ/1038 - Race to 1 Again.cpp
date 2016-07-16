@@ -22,6 +22,7 @@ double gao(int n) {
     }
     return f[n] =  (sum + p + 1) / p; //  .
 }
+
 int main() {
 
     for(int i = 0; i < MAXN; i ++) f[i] = -1;
