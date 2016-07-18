@@ -44,6 +44,7 @@ int LCA(int u, int v) {
     }
     return node[tu].fa[0];
 }
+
 char s[MAXN];
 int main() {
     int T, n, m, u, v;
