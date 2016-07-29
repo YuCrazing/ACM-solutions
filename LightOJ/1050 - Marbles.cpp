@@ -4,6 +4,7 @@ using namespace std;
 
 const int N = 502;
 double dp[N][N];
+
 void init() {
 
     for(int i = 1; i < N; i ++) {
