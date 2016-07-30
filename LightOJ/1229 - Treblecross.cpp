@@ -59,15 +59,12 @@ int main() {
         int sg = 0;
         for(int i = 0; i < ct; i ++) sg ^= dp[max(seg[i].r - 2 - (seg[i].l + 2) - 1, 0)];
 
-        if(sg) {
+        if(sg) { //O(n) to get first put positions.
             for(int i = 0; i < ct; i ++) {
                 for(int pos = seg[i].l + 3; pos <= seg[i].r - 3; pos ++) {
-                    sg = dp[max(pos - (seg[i].l + 3) - 2, 0)] ^ dp[max(seg[i].r - 3 - pos - 2, 0)];
-                    for(int k = 0; k < ct; k ++) {
-                        if(k == i) continue;
-                        sg ^= dp[max(seg[k].r - 2 - (seg[k].l + 2) - 1, 0)];
-                    }
-                    if(!sg) printf(" %d", pos + 1);
+                    int t = dp[max(pos - (seg[i].l + 3) - 2, 0)] ^ dp[max(seg[i].r - 3 - pos - 2, 0)];
+                    t ^= dp[max(seg[i].r - 2 - (seg[i].l + 2) - 1, 0)];
+                    if(!(sg ^ t)) printf(" %d", pos + 1);
                 }
             }
         } else printf(" 0");
