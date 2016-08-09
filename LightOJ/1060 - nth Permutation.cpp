@@ -36,6 +36,7 @@ int main() {
         scanf("%s%d",s, &n);
         memset(num, 0, sizeof(num));
         int l = strlen(s);
+
         for(int i = 0; i < l; i ++) num[s[i] - 'a'] ++;
 
         printf("Case %d: ", cas);
