@@ -7,7 +7,7 @@ using namespace std;
 typedef long long ll;
 typedef pair<ll, ll> pll;
 
-pll dp[25][25*6 + 3];
+pll dp[25][25*6 + 2];
 
 void init() {
     for(int i = 0; i < 25; i ++) {
