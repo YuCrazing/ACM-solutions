@@ -52,7 +52,6 @@ int main() {
         for(int i = 0; i < n; i++) {
             scanf("%s", s);
             if(tree.insert(s)) ok = false;
-
         }
         printf("Case %d: ", ca);
         printf(ok ? "YES\n" : "NO\n");
