@@ -86,7 +86,7 @@ int main() {
         }
 
         printf("Case %d:\n", ca);
-        cout << "Case " << ca << ":" << endl;
+        //cout << "Case " << ca << ":" << endl;
         cin >> m;
         cin.ignore(); //important
         for(int i = 0; i < m; i++) {
