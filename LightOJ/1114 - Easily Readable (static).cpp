@@ -16,7 +16,7 @@ using namespace std;
 const int N = 1e5 + 1;
 
 struct Node {
-    long long son[52];
+    int son[52];
     int num;
 };
 
@@ -66,9 +66,7 @@ struct Trie {
     }
 } trie;
 int main() {
-    assert(sizeof(void*) == 2 * sizeof(int));
-    assert(sizeof(void*) == 8);
-    assert(sizeof(int) == 4);
+
     //freopen("1114.in", "r", stdin);
     //freopen("1114.out", "w", stdout);
     ios::sync_with_stdio(false);
@@ -88,6 +86,7 @@ int main() {
         }
 
         printf("Case %d:\n", ca);
+        cout << "Case " << ca << ":" << endl;
         cin >> m;
         cin.ignore(); //important
         for(int i = 0; i < m; i++) {
