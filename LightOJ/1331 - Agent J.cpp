@@ -1,5 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
+/*
+    注意cout 默认只保留六位有效位数（加上整数部分），
+    需要setprecision才能保证小数位数
+*/
 
 double r[3], l[3], theta[3], area;
 double aacos(double a, double b, double c){
