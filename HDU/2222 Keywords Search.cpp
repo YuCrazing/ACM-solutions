@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
-    caution: same words.
+    Caution: same words.
 */
 
 const int N = 50 * 10000 + 5;
