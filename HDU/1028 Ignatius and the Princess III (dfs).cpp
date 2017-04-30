@@ -20,6 +20,7 @@ int main() {
     init();
     int n;
     while(scanf("%d", &n) != EOF) {
+//        for(int m = 2; m <=n; m++) printf("(%d %d) %d\n", n, m, dfs(n, m) - dfs(n, m - 1));
         printf("%d\n", dfs(n, n));
     }
     return 0;
