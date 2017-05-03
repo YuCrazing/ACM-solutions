@@ -5,7 +5,6 @@ typedef long long ll;
 const ll INF = 1e19;
 const int N = 1e5 + 2;
 
-
 ll sum[N];
 int a[N], b[N], n;
 int main() {
