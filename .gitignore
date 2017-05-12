@@ -48,6 +48,8 @@ Temporary Items
 .metadata
 .recommenders
 
+*.in
+*.out
 *.txt
 *.o
 *.exe
