@@ -50,8 +50,8 @@ int main() {
     sort(a[1].begin(), a[1].end());
     init();
 
-    for(int k = 0; k < 2;k ++)
-        for(int i = 0; i < a[k].size(); i++){
+    for(int k = 0; k < 2; k ++)
+        for(int i = 0; i < a[k].size(); i++) {
             b[k][i] = a[k][i].w;
 //            printf("%d %d %d\n", k, i, b[k][i]);
         }
