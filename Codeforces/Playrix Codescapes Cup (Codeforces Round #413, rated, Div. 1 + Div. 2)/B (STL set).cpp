@@ -3,7 +3,6 @@ using namespace std;
 
 const int N = 2e5 + 3;
 
-
 struct Node {
     int p, a, b;
     bool operator<(const Node& t)const {
