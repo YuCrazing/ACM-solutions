@@ -1,5 +1,5 @@
 /*
-    һ��ͼƥ�� or ״̬ѹ��DP
+    一般图匹配 or 状态压缩 DP
 */
 #include<bits/stdc++.h>
 using namespace std;
