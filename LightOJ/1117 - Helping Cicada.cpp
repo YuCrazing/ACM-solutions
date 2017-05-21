@@ -1,6 +1,7 @@
 /*
     ([n/x] >= y) <==> (n >= x*y)
 */
+
 #include<bits/stdc++.h>
 using namespace std;
 
