@@ -17,6 +17,7 @@ public class Main {
 			BigDecimal ans = BigDecimal.ZERO;
 			if(m == 1 || x.compareTo(BigDecimal.ONE) <= 0) ans = x;
 			else ans = Newton();
+//			System.out.println(ans.setScale(10, RoundingMode.HALF_UP)); // Set precision(set decimal digits).
 			System.out.println(ans.toBigInteger());
 		}
 	}
