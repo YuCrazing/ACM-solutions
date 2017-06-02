@@ -14,6 +14,7 @@ int main() {
         for(int i = 0; i < n; i++) {
             cin >> s;
             int j = 0;
+            while(s[j] == '0') j++; // Remove leading zeros.
             if(j == s.size()) s = "0";
             else s = s.substr(j);
             if(mp.find(s) == mp.end()) mp[s] = 1;
