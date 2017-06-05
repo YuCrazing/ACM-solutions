@@ -50,80 +50,27 @@ void DA(char *s, int n) {
 
 }
 
-int l, minn;
-bool vis[2];
-
-void mk(int i) {
-    if(sa[i] < len[0]) vis[0] = 1;
-    else vis[1] = 1;
-}
-
-bool ok(int x) {
-    if(!x) return true;
-
-    int i = 2;
-    bool fi;
-    while(i < l) { // i < l !!
-        fi = true;
-        while(height[i] >= x && i < l) {
-            if(fi) {
-                memset(vis, 0, sizeof(vis));
-                mk(i - 1);
-                mk(i);
-                fi = false;
-            } else mk(i);
-            i++;
-        }
-        if(!fi) {
-            bool valid = true;
-            for(int j = 0; j < 2; j++) if(!vis[j]) {
-                    valid = false;
-                    break;
-                }
-            if(valid) return true;
-        }
-        i++;
-    }
-
-    if(!fi) {
-        bool valid = true;
-        for(int j = 0; j < 2; j++) if(!vis[j]) {
-                valid = false;
-                break;
-            }
-        if(valid) return true;
-    }
-
-    return false;
-}
-
-int BS() {
-    int l = 0, r = minn;
-    while(l < r) {
-        int mid = (l + r + 1) >> 1;
-        if(ok(mid)) l = mid;
-        else r = mid - 1;
-    }
-    return l;
-}
-
 char s[2][100005], t[L];
 
 int main() {
     while(scanf("%s%s", s[0], s[1]) != EOF) {
-        l = 0;
-        minn = L;
+        int l = 0;
         for(int i = 0; i < 2; i++) {
             strcpy(t + l, s[i]);
             len[i] = strlen(s[i]);
-            minn = min(minn, len[i]);
             l += len[i];
             t[l++] = 1-i;
         }
 
         DA(t, l-1);
 
-        printf("%d\n", BS());
+        int ans = 0;
+        for(int i = 2; i < l; i++) {
+            if((sa[i-1] < len[0]&&sa[i]>len[0])||(sa[i-1] > len[0]&&sa[i]<len[0]))
+                ans = max(ans, height[i]);
+        }
+
+        printf("%d\n", ans);
     }
     return 0;
 }
