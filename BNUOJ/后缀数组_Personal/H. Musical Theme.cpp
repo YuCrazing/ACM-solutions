@@ -9,7 +9,6 @@
 using namespace std;
 
 const int N = 2e4 + 5;
-
 int t1[N], t2[N], c[N], sa[N], ra[N], height[N];
 
 bool cmp(int *r, int a, int b, int l) {
