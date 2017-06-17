@@ -3,7 +3,7 @@
 #include<algorithm>
 using namespace std;
 
-const int L = 100005*2;
+const int L = 100004*2;
 int T, t1[L], t2[L], c[L], ra[L], sa[L], height[L], len[2];
 
 bool cmp(int *r, int a, int b, int l) {
