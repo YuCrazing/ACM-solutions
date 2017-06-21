@@ -1,4 +1,7 @@
-#include<bits/stdc++.h>
+#include<cstdio>
+#include<cstring>
+#include<cassert>
+#include<algorithm>
 using namespace std;
 
 const int N = 1e5 + 5;
