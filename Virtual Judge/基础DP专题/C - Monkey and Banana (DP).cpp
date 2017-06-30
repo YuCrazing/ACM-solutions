@@ -27,7 +27,6 @@ struct Box {
 } box[N], tbox;
 
 int n, m, ca = 0, ans, dp[N];
-
 int main() {
     while(scanf("%d", &n) != EOF && n) {
         m = 0;
