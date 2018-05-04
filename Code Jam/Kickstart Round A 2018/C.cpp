@@ -1,92 +1,121 @@
 /*
-    错误原因：
-        x = s2[0], y = s1[0] 写成了 x = s1[0], y = s2[0]
-    总结：
-        命名的语义问题，x, y的变量命名在这里不合适，容易引起错误。
+    unordered_set: 274s
+    unordered_map: 289s
+
+    max_load_factor(0.75), reserve(16):
+    unordered_set: 239s
+    unordered_map: 252s
 */
 
 #include <bits/stdc++.h>
 using namespace std;
-typedef double db;
 typedef long long ll;
+typedef unsigned long long ull;
 
-const int L = 1e5 + 5;
-const int N = 1011;
-const int M = 1011;
+const int N = 1e6 + 5;
+const ull P = 1e9 + 7;
 
-ll A, B, C, D;
+ll A, B, C, D, L;
+int ans, n, T;
+ull p[26];
+
+unordered_set<ull> st[26][26];
+//unordered_map<ull, bool> mp[26][26];
+vector<string> v[100005];
+string s, ss;
+
 ll getNext(ll x, ll y) {
     return (A * x + B * y + C) % D;
 }
 
-int ct[M][26], len[M], sum[N][26], n, m, ch[M][2];
-char s[L], s1[10], s2[10], ss[N];
-ll ans;
+void init() {
+    for(int i = 0; i < 100005; ++i) v[i].clear();
+    for(int i = 0; i < 26; ++i) p[i] = (i ? p[i-1]*P : 1);
+    ans = 0;
+}
+
+ull has(string &str) {
+    ull r = 0;
+    for(int i = 0; i < str.size(); ++i) r += p[str[i]-'a'];
+    return r;
+}
+
+
 int main() {
-    freopen("C-small-practice.in", "r", stdin);
-    freopen("C-small-practice.out", "w", stdout);
-    int T, n, k;
-    scanf("%d", &T);
+    int start=clock();
 
+//    for(int i = 0; i < 26; ++i)
+//        for(int j = 0; j < 26; ++j) {
+////            st[i][j].max_load_factor(0.75);
+////            st[i][j].reserve(16);
+//            mp[i][j].max_load_factor(0.75);
+//            mp[i][j].reserve(16);
+//        }
+
+    freopen("C-large-practice.in", "r", stdin);
+    freopen("C-large-practice.out", "w", stdout);
+
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
+    cin >> T;
     for(int ca = 1; ca <= T; ca++) {
-        memset(ct, 0, sizeof(ct));
-        memset(sum, 0, sizeof(sum));
-        memset(len, 0, sizeof(len));
-        ans = 0;
-        scanf("%d", &m);
-        for(int i = 0; i < m; i++) {
-            scanf("%s", s);
-            for(int j = 0; s[j]; j++) {
-                ct[i][s[j]-'a'] ++;
-                len[i]++;
-            }
-            ch[i][0] = s[0];
-            ch[i][1] = s[len[i]-1];
-        }
-        scanf("%s%s%d%lld%lld%lld%lld", s1, s2, &n, &A, &B, &C, &D);
-        sum[0][s1[0]-'a'] ++;
-        sum[1][s1[0]-'a'] ++;
-        sum[1][s2[0]-'a'] ++;
-        ss[0] = s1[0];
-        ss[1] = s2[0];
-        //int i = 2, x = s1[0], y = s2[0]; !!!!!!!!!!!!!!!!!!!!!!!!!!!
-        int i = 2, x = s2[0], y = s1[0];
-        while(i < n) {
-            ll z = getNext(x, y);
-            int ass = z%26+97;
-            //printf("%c\n", ass);
-            memcpy(sum[i], sum[i-1], sizeof(sum[i-1]));
-            sum[i][ass-'a'] ++;
-            ss[i] = ass;
-            y = x;
-            x = z;
-            i++;
-        }
-        //printf("%s\n", ss);
-
-        for(int i = 0; i < m; i++) {
-            for(int head = 0; head + len[i] - 1 < n; head++) {
-                int tail = head + len[i] - 1;
-                if(ch[i][0] != ss[head] || ch[i][1] != ss[tail]) continue;
-                bool ok = true;
-                for(int j = 0; j < 26; j++) {
-                    //if(i==0 && !head) printf("%c %d %d\n", j+'a', ct[i][j], (head?sum[tail][j]-sum[head-1][j]:sum[tail][j]));
-                    if(ct[i][j] != (head?sum[tail][j]-sum[head-1][j]:sum[tail][j])) {
-                        ok = false;
-                        break;
-                    }
-                }
-                if(ok) {
-                    //printf("i = %d\n", i);
-                    ans++;
-                    break;
-                }
-            }
+        init();
+        cin >> L;
+        for(int i = 0; i < L; ++i) {
+            cin >> s;
+            v[s.size()].push_back(s);
         }
 
-        printf("Case #%d: %lld\n", ca, ans);
+        cin >> s >> ss >> n >> A >> B >> C >> D;
+
+        int ind = 2, asi, nex = ss[0], pre = s[0];
+        s += ss[0];
+        while(ind < n) {
+            ll neww = getNext(nex, pre);
+            int asi = neww%26+97;
+            s += (char)asi;
+            pre = nex;
+            nex = neww;
+            ++ind;
+        }
+//        cerr << s << endl;
+
+        for(int len = 1; len < 100005; ++len) {
+            if(v[len].size()==0) continue;
+            if(len > s.size()) break;
+
+            ull r=0;
+            for(int i = 0; i < len; ++i) r += p[s[i]-'a'];
+
+            for(int i = 0; i < 26; ++i)
+                for(int j = 0; j < 26; ++j)
+                    st[i][j].clear();
+//                    mp[i][j].clear();
+
+            st[s[0]-'a'][s[len-1]-'a'].insert(r);
+//            mp[s[0]-'a'][s[len-1]-'a'][r]=true;
+
+            for(int i = 1; i+len-1 < s.size(); ++i) {
+                r -= p[s[i-1]-'a'];
+                r += p[s[len+i-1]-'a'];
+                st[s[i]-'a'][s[i+len-1]-'a'].insert(r);
+//                mp[s[i]-'a'][s[i+len-1]-'a'][r]=true;
+            }
+
+            for(int i = 0; i < v[len].size(); ++i) {
+                string& str = v[len][i];
+                int a=str[0]-'a';
+                int b=str[str.size()-1]-'a';
+                ull c=has(str);
+                if(st[a][b].find(c)!=st[a][b].end()) ++ans;
+//                if(mp[a][b].find(c)!=mp[a][b].end()) ++ans;
+            }
+        }
+        int endd=clock();
+        cerr << ca << "   " << (endd - start) / CLOCKS_PER_SEC << endl;
+        cout << "Case #" << ca << ": " << ans << endl;
     }
-
     return 0;
 }
 
