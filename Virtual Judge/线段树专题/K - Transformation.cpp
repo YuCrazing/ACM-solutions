@@ -5,7 +5,7 @@
 
 
     注意：
-        替换操作的默认值不能是0，因为取膜后有可能出现替换为0的情况 (WA)
+        替换操作的默认值不能是0，因为取模后有可能出现替换为0的情况 (WA)
         往孩子传标记的时候，孩子的sum值也要同时更新
 */
 
@@ -206,7 +206,7 @@ struct Brute {
         int ans=0;
         for(int i = a; i <= b; i++) {
             int t=1;
-            for(int j=0; j<p; j++)mul(t, num[i]);
+            for(int j=0; j<p; j++) mul(t, num[i]);
             add(ans, t);
         }
         return ans;
