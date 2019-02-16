@@ -1,3 +1,7 @@
+/*
+    考虑每个元素a[i]对最终答案的贡献
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
